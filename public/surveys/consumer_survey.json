@@ -76,7 +76,7 @@
                             }
                         }
                     ],
-                    "required": true
+                    "required": false
                 },
                 {
                     "id": "q_gender",
@@ -120,7 +120,7 @@
                             }
                         }
                     ],
-                    "required": true
+                    "required": false
                 },
                 {
                     "id": "q_country",
@@ -172,7 +172,7 @@
                             }
                         }
                     ],
-                    "required": true
+                    "required": false
                 },
                 {
                     "id": "q_email_test",
@@ -182,7 +182,7 @@
                         "pt": "Por favor, insira seu endereço de e-mail para atualizações da pesquisa",
                         "es": "Por favor, introduzca su correo electrónico para actualizaciones de la encuesta"
                     },
-                    "required": true
+                    "required": false
                 },
                 {
                     "id": "q_phone_contact",
@@ -192,7 +192,7 @@
                         "pt": "Por favor, insira seu número de telefone para fins de contato (opcional)",
                         "es": "Por favor, introduzca su número de teléfono para fines de contacto (opcional)"
                     },
-                    "required": true
+                    "required": false
                 }
             ]
         },
@@ -251,7 +251,7 @@
                             }
                         }
                     ],
-                    "required": true
+                    "required": false
                 },
                 {
                     "id": "q_freq",
@@ -295,7 +295,7 @@
                             }
                         }
                     ],
-                    "required": true
+                    "required": false
                 },
                 {
                     "id": "q_top_reasons",
@@ -347,7 +347,7 @@
                             }
                         }
                     ],
-                    "required": true,
+                    "required": false,
                     "maxSelect": 3
                 },
                 {
@@ -418,7 +418,7 @@
                             }
                         }
                     ],
-                    "required": true
+                    "required": false
                 }
             ]
         },
@@ -460,7 +460,7 @@
                             }
                         }
                     ],
-                    "required": true,
+                    "required": false,
                     "branches": [
                         {
                             "when": {
@@ -542,7 +542,7 @@
                             }
                         }
                     ],
-                    "required": true,
+                    "required": false,
                     "maxSelect": 3
                 },
                 {
@@ -587,7 +587,7 @@
                             }
                         }
                     ],
-                    "required": true
+                    "required": false
                 }
             ]
         },
@@ -637,7 +637,7 @@
                             }
                         }
                     ],
-                    "required": true,
+                    "required": false,
                     "qualityCheck": true
                 },
                 {
@@ -666,7 +666,7 @@
                             }
                         }
                     ],
-                    "required": true,
+                    "required": false,
                     "branches": [
                         {
                             "when": {

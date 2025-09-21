@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Responses Dashboard</title>
+    <style>
+        .dashboard-container {
+            width: 70%;
+            margin-inline: auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 16px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: #fff;
+            color: black;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f0f0f0;
+        }
+
+        tr:nth-child(even) {
+            background: #f7f7f7;
+        }
+
+        .json-view {
+            font-family: monospace;
+            font-size: 0.95em;
+            white-space: pre-wrap;
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard-container {
+                width: 95%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <nav style="display:flex;justify-content:flex-end;gap:1.5rem;margin:0 0 2rem 0;">
+        <a href="./index.html"
+            style="color:#fff;background:#222;padding:0.5em 1.2em;border-radius:8px;text-decoration:none;font-weight:600;">Survey
+            Page</a>
+    </nav>
+
+    <div class="dashboard-container">
+
+        <h1>Survey Responses Dashboard</h1>
+        <div class="table-responsive">
+            <table id="responses-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Submitted At</th>
+                        <th>Response Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="3">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        fetch('http://localhost:3000/api/responses')
+            .then(res => res.json())
+            .then(data => {
+                const tbody = document.querySelector('#responses-table tbody');
+                tbody.innerHTML = '';
+                if (data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="3">No responses yet.</td></tr>';
+                    return;
+                }
+                data.forEach(resp => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${resp.id}</td>
+                        <td>${resp.submitted_at}</td>
+                        <td>${formatAnswers(resp.data)}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            });
+
+        function formatAnswers(obj) {
+            if (!obj || typeof obj !== 'object') return '';
+            let html = '<ul style="margin:0;padding-left:1.2em">';
+            for (const key in obj) {
+                let val = obj[key];
+                if (Array.isArray(val)) val = val.join(', ');
+                if (typeof val === 'object' && val !== null) val = JSON.stringify(val);
+                html += `<li><strong>${key}:</strong> ${val}</li>`;
+            }
+            html += '</ul>';
+            return html;
+        }
+    </script>
+</body>
+
+</html>
