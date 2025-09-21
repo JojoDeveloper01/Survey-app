@@ -1,0 +1,731 @@
+{
+    "surveyId": "global_consumer_001",
+    "version": "1.0.0",
+    "title": "Global Consumer Habits Survey",
+    "description": "A short multi-country survey about shopping behaviour and preferences.",
+    "languages": [
+        "en",
+        "pt",
+        "es"
+    ],
+    "countries": [
+        "PT",
+        "ES",
+        "GB",
+        "US",
+        "DE"
+    ],
+    "estimatedTimeMinutes": 8,
+    "collectIp": false,
+    "anonymous": true,
+    "consentRequired": true,
+    "randomizeQuestionBlocks": false,
+    "blocks": [
+        {
+            "blockId": "demo_block",
+            "title": "Demographics",
+            "randomizeQuestions": false,
+            "questions": [
+                {
+                    "id": "q_age",
+                    "type": "single",
+                    "label": {
+                        "en": "What is your age range?",
+                        "pt": "Qual é a sua faixa etária?",
+                        "es": "¿Cuál es su rango de edad?"
+                    },
+                    "options": [
+                        {
+                            "value": "under_18",
+                            "label": {
+                                "en": "Under 18",
+                                "pt": "Menos de 18",
+                                "es": "Menos de 18"
+                            }
+                        },
+                        {
+                            "value": "18_24",
+                            "label": {
+                                "en": "18-24",
+                                "pt": "18-24",
+                                "es": "18-24"
+                            }
+                        },
+                        {
+                            "value": "25_34",
+                            "label": {
+                                "en": "25-34",
+                                "pt": "25-34",
+                                "es": "25-34"
+                            }
+                        },
+                        {
+                            "value": "35_44",
+                            "label": {
+                                "en": "35-44",
+                                "pt": "35-44",
+                                "es": "35-44"
+                            }
+                        },
+                        {
+                            "value": "45_plus",
+                            "label": {
+                                "en": "45 or older",
+                                "pt": "45 ou mais",
+                                "es": "45 o más"
+                            }
+                        }
+                    ],
+                    "required": true
+                },
+                {
+                    "id": "q_gender",
+                    "type": "single",
+                    "label": {
+                        "en": "Which best describes your gender?",
+                        "pt": "Qual a opção que melhor descreve o seu género?",
+                        "es": "¿Cuál describe mejor su género?"
+                    },
+                    "options": [
+                        {
+                            "value": "female",
+                            "label": {
+                                "en": "Female",
+                                "pt": "Feminino",
+                                "es": "Femenino"
+                            }
+                        },
+                        {
+                            "value": "male",
+                            "label": {
+                                "en": "Male",
+                                "pt": "Masculino",
+                                "es": "Masculino"
+                            }
+                        },
+                        {
+                            "value": "nonbinary",
+                            "label": {
+                                "en": "Non-binary/Other",
+                                "pt": "Não-binário/Outro",
+                                "es": "No binario/Otro"
+                            }
+                        },
+                        {
+                            "value": "prefer_not",
+                            "label": {
+                                "en": "Prefer not to say",
+                                "pt": "Prefiro não dizer",
+                                "es": "Prefiero no decir"
+                            }
+                        }
+                    ],
+                    "required": true
+                },
+                {
+                    "id": "q_country",
+                    "type": "single",
+                    "label": {
+                        "en": "Which country do you currently live in?",
+                        "pt": "Em que país você vive atualmente?",
+                        "es": "¿En qué país vive actualmente?"
+                    },
+                    "options": [
+                        {
+                            "value": "PT",
+                            "label": {
+                                "en": "Portugal",
+                                "pt": "Portugal",
+                                "es": "Portugal"
+                            }
+                        },
+                        {
+                            "value": "ES",
+                            "label": {
+                                "en": "Spain",
+                                "pt": "Espanha",
+                                "es": "España"
+                            }
+                        },
+                        {
+                            "value": "GB",
+                            "label": {
+                                "en": "United Kingdom",
+                                "pt": "Reino Unido",
+                                "es": "Reino Unido"
+                            }
+                        },
+                        {
+                            "value": "US",
+                            "label": {
+                                "en": "United States",
+                                "pt": "Estados Unidos",
+                                "es": "Estados Unidos"
+                            }
+                        },
+                        {
+                            "value": "DE",
+                            "label": {
+                                "en": "Germany",
+                                "pt": "Alemanha",
+                                "es": "Alemania"
+                            }
+                        }
+                    ],
+                    "required": true
+                },
+                {
+                    "id": "q_email_test",
+                    "type": "email",
+                    "label": {
+                        "en": "Please enter your email address for survey updates",
+                        "pt": "Por favor, insira seu endereço de e-mail para atualizações da pesquisa",
+                        "es": "Por favor, introduzca su correo electrónico para actualizaciones de la encuesta"
+                    },
+                    "required": true
+                },
+                {
+                    "id": "q_phone_contact",
+                    "type": "phone",
+                    "label": {
+                        "en": "Please enter your phone number for contact purposes",
+                        "pt": "Por favor, insira seu número de telefone para fins de contato (opcional)",
+                        "es": "Por favor, introduzca su número de teléfono para fines de contacto (opcional)"
+                    },
+                    "required": true
+                }
+            ]
+        },
+        {
+            "blockId": "shopping_block",
+            "title": "Shopping & Consumption",
+            "randomizeQuestions": false,
+            "questions": [
+                {
+                    "id": "q_channel_pref",
+                    "type": "multiple",
+                    "label": {
+                        "en": "Which channels do you use to buy groceries? (Select all that apply)",
+                        "pt": "Quais canais você usa para comprar mantimentos? (Selecione todos os que se aplicam)",
+                        "es": "¿Qué canales utiliza para comprar comestibles? (Seleccione todos los que correspondan)"
+                    },
+                    "options": [
+                        {
+                            "value": "supermarket",
+                            "label": {
+                                "en": "Supermarket (in-person)",
+                                "pt": "Supermercado (presencial)",
+                                "es": "Supermercado (presencial)"
+                            }
+                        },
+                        {
+                            "value": "online_retailer",
+                            "label": {
+                                "en": "Online retailers",
+                                "pt": "Varejistas online",
+                                "es": "Minoristas en línea"
+                            }
+                        },
+                        {
+                            "value": "delivery_apps",
+                            "label": {
+                                "en": "Delivery apps",
+                                "pt": "Apps de entrega",
+                                "es": "Apps de entrega"
+                            }
+                        },
+                        {
+                            "value": "local_market",
+                            "label": {
+                                "en": "Local market / small shop",
+                                "pt": "Mercado/local",
+                                "es": "Mercado/local"
+                            }
+                        },
+                        {
+                            "value": "other",
+                            "label": {
+                                "en": "Other",
+                                "pt": "Outro",
+                                "es": "Otro"
+                            }
+                        }
+                    ],
+                    "required": true
+                },
+                {
+                    "id": "q_freq",
+                    "type": "single",
+                    "label": {
+                        "en": "How often do you shop for groceries?",
+                        "pt": "Com que frequência compra mantimentos?",
+                        "es": "¿Con qué frecuencia compra comestibles?"
+                    },
+                    "options": [
+                        {
+                            "value": "daily",
+                            "label": {
+                                "en": "Daily",
+                                "pt": "Diariamente",
+                                "es": "Diariamente"
+                            }
+                        },
+                        {
+                            "value": "weekly",
+                            "label": {
+                                "en": "Weekly",
+                                "pt": "Semanalmente",
+                                "es": "Semanalmente"
+                            }
+                        },
+                        {
+                            "value": "biweekly",
+                            "label": {
+                                "en": "Every two weeks",
+                                "pt": "A cada duas semanas",
+                                "es": "Cada dos semanas"
+                            }
+                        },
+                        {
+                            "value": "monthly",
+                            "label": {
+                                "en": "Monthly",
+                                "pt": "Mensalmente",
+                                "es": "Mensualmente"
+                            }
+                        }
+                    ],
+                    "required": true
+                },
+                {
+                    "id": "q_top_reasons",
+                    "type": "ranked",
+                    "label": {
+                        "en": "Rank the top 3 reasons you choose a store",
+                        "pt": "Classifique as 3 principais razões para escolher uma loja",
+                        "es": "Ordene las 3 principales razones para elegir una tienda"
+                    },
+                    "options": [
+                        {
+                            "value": "price",
+                            "label": {
+                                "en": "Low price",
+                                "pt": "Preço baixo",
+                                "es": "Bajo precio"
+                            }
+                        },
+                        {
+                            "value": "quality",
+                            "label": {
+                                "en": "Quality of products",
+                                "pt": "Qualidade dos produtos",
+                                "es": "Calidad de los productos"
+                            }
+                        },
+                        {
+                            "value": "location",
+                            "label": {
+                                "en": "Location / Convenience",
+                                "pt": "Localização / Conveniência",
+                                "es": "Ubicación / Conveniencia"
+                            }
+                        },
+                        {
+                            "value": "brand",
+                            "label": {
+                                "en": "Brand selection",
+                                "pt": "Seleção de marcas",
+                                "es": "Selección de marcas"
+                            }
+                        },
+                        {
+                            "value": "delivery",
+                            "label": {
+                                "en": "Fast delivery options",
+                                "pt": "Opções de entrega rápida",
+                                "es": "Opciones de entrega rápida"
+                            }
+                        }
+                    ],
+                    "required": true,
+                    "maxSelect": 3
+                },
+                {
+                    "id": "q_product_matrix",
+                    "type": "matrix",
+                    "label": {
+                        "en": "How frequently do you buy the following categories?",
+                        "pt": "Com que frequência compra as seguintes categorias?",
+                        "es": "¿Con qué frecuencia compra las siguientes categorías?"
+                    },
+                    "rows": [
+                        {
+                            "value": "milk",
+                            "label": {
+                                "en": "Milk",
+                                "pt": "Leite",
+                                "es": "Leche"
+                            }
+                        },
+                        {
+                            "value": "bread",
+                            "label": {
+                                "en": "Bread",
+                                "pt": "Pão",
+                                "es": "Pan"
+                            }
+                        },
+                        {
+                            "value": "snacks",
+                            "label": {
+                                "en": "Snacks",
+                                "pt": "Petiscos",
+                                "es": "Snacks"
+                            }
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "value": "never",
+                            "label": {
+                                "en": "Never",
+                                "pt": "Nunca",
+                                "es": "Nunca"
+                            }
+                        },
+                        {
+                            "value": "rarely",
+                            "label": {
+                                "en": "Rarely",
+                                "pt": "Raramente",
+                                "es": "Raramente"
+                            }
+                        },
+                        {
+                            "value": "sometimes",
+                            "label": {
+                                "en": "Sometimes",
+                                "pt": "Às vezes",
+                                "es": "A veces"
+                            }
+                        },
+                        {
+                            "value": "often",
+                            "label": {
+                                "en": "Often",
+                                "pt": "Frequentemente",
+                                "es": "A menudo"
+                            }
+                        }
+                    ],
+                    "required": true
+                }
+            ]
+        },
+        {
+            "blockId": "behavior_logic_block",
+            "title": "Advanced Logic & Branching",
+            "questions": [
+                {
+                    "id": "q_online_only_branch",
+                    "type": "single",
+                    "label": {
+                        "en": "Do you ever buy groceries exclusively online (no in-store visits)?",
+                        "pt": "Você já compra mantimentos exclusivamente online (sem visitas à loja)?",
+                        "es": "¿Compra comestibles exclusivamente en línea (sin visitar tiendas)?"
+                    },
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": {
+                                "en": "Yes",
+                                "pt": "Sim",
+                                "es": "Sí"
+                            }
+                        },
+                        {
+                            "value": "no",
+                            "label": {
+                                "en": "No",
+                                "pt": "Não",
+                                "es": "No"
+                            }
+                        },
+                        {
+                            "value": "sometimes",
+                            "label": {
+                                "en": "Sometimes",
+                                "pt": "Às vezes",
+                                "es": "A veces"
+                            }
+                        }
+                    ],
+                    "required": true,
+                    "branches": [
+                        {
+                            "when": {
+                                "equals": "yes"
+                            },
+                            "goto": "q_online_details"
+                        },
+                        {
+                            "when": {
+                                "equals": "no"
+                            },
+                            "goto": "q_offline_reason"
+                        }
+                    ]
+                },
+                {
+                    "id": "q_online_details",
+                    "type": "multiple",
+                    "label": {
+                        "en": "Which online platforms do you use? (Select all that apply)",
+                        "pt": "Quais plataformas online você usa? (Selecione todas as que se aplicam)",
+                        "es": "¿Qué plataformas en línea utiliza? (Seleccione todas las que correspondan)"
+                    },
+                    "options": [
+                        {
+                            "value": "amazon",
+                            "label": {
+                                "en": "Amazon",
+                                "pt": "Amazon",
+                                "es": "Amazon"
+                            }
+                        },
+                        {
+                            "value": "walmart",
+                            "label": {
+                                "en": "Walmart",
+                                "pt": "Walmart",
+                                "es": "Walmart"
+                            }
+                        },
+                        {
+                            "value": "instacart",
+                            "label": {
+                                "en": "Instacart",
+                                "pt": "Instacart",
+                                "es": "Instacart"
+                            }
+                        },
+                        {
+                            "value": "uber_eats",
+                            "label": {
+                                "en": "Uber Eats",
+                                "pt": "Uber Eats",
+                                "es": "Uber Eats"
+                            }
+                        },
+                        {
+                            "value": "doordash",
+                            "label": {
+                                "en": "DoorDash",
+                                "pt": "DoorDash",
+                                "es": "DoorDash"
+                            }
+                        },
+                        {
+                            "value": "local_supermarket",
+                            "label": {
+                                "en": "Local supermarket website",
+                                "pt": "Site do supermercado local",
+                                "es": "Sitio web del supermercado local"
+                            }
+                        },
+                        {
+                            "value": "other",
+                            "label": {
+                                "en": "Other",
+                                "pt": "Outro",
+                                "es": "Otro"
+                            }
+                        }
+                    ],
+                    "required": true,
+                    "maxSelect": 3
+                },
+                {
+                    "id": "q_offline_reason",
+                    "type": "single",
+                    "label": {
+                        "en": "Why do you prefer to shop in-store?",
+                        "pt": "Por que você prefere comprar na loja?",
+                        "es": "¿Por qué prefiere comprar en la tienda?"
+                    },
+                    "options": [
+                        {
+                            "value": "see_products",
+                            "label": {
+                                "en": "To see/try products",
+                                "pt": "Ver/testar produtos",
+                                "es": "Ver/probar productos"
+                            }
+                        },
+                        {
+                            "value": "immediate",
+                            "label": {
+                                "en": "Immediate purchase / no wait",
+                                "pt": "Compra imediata / sem espera",
+                                "es": "Compra inmediata / sin espera"
+                            }
+                        },
+                        {
+                            "value": "avoid_fees",
+                            "label": {
+                                "en": "Avoid delivery fees",
+                                "pt": "Evitar taxas de entrega",
+                                "es": "Evitar tarifas de entrega"
+                            }
+                        },
+                        {
+                            "value": "other",
+                            "label": {
+                                "en": "Other",
+                                "pt": "Outro",
+                                "es": "Otro"
+                            }
+                        }
+                    ],
+                    "required": true
+                }
+            ]
+        },
+        {
+            "blockId": "quality_check_block",
+            "title": "Quality Checks & Ending",
+            "questions": [
+                {
+                    "id": "q_attention",
+                    "type": "single",
+                    "label": {
+                        "en": "Please select 'Often' to confirm you are paying attention.",
+                        "pt": "Por favor selecione 'Frequentemente' para confirmar que está prestando atenção.",
+                        "es": "Por favor seleccione 'A menudo' para confirmar que está prestando atención."
+                    },
+                    "options": [
+                        {
+                            "value": "never",
+                            "label": {
+                                "en": "Never",
+                                "pt": "Nunca",
+                                "es": "Nunca"
+                            }
+                        },
+                        {
+                            "value": "rarely",
+                            "label": {
+                                "en": "Rarely",
+                                "pt": "Raramente",
+                                "es": "Raramente"
+                            }
+                        },
+                        {
+                            "value": "sometimes",
+                            "label": {
+                                "en": "Sometimes",
+                                "pt": "Às vezes",
+                                "es": "A veces"
+                            }
+                        },
+                        {
+                            "value": "often",
+                            "label": {
+                                "en": "Often",
+                                "pt": "Frequentemente",
+                                "es": "A menudo"
+                            }
+                        }
+                    ],
+                    "required": true,
+                    "qualityCheck": true
+                },
+                {
+                    "id": "q_contact_opt_in",
+                    "type": "single",
+                    "label": {
+                        "en": "Would you like to be contacted for future studies (optional)? If yes, you will be asked to provide an email.",
+                        "pt": "Gostaria de ser contatado para futuros estudos (opcional)? Se sim, será solicitado um e-mail.",
+                        "es": "¿Le gustaría ser contactado para estudios futuros (opcional)? Si es así, se le pedirá un correo electrónico."
+                    },
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": {
+                                "en": "Yes",
+                                "pt": "Sim",
+                                "es": "Sí"
+                            }
+                        },
+                        {
+                            "value": "no",
+                            "label": {
+                                "en": "No",
+                                "pt": "Não",
+                                "es": "No"
+                            }
+                        }
+                    ],
+                    "required": true,
+                    "branches": [
+                        {
+                            "when": {
+                                "equals": "yes"
+                            },
+                            "goto": "q_contact_email"
+                        },
+                        {
+                            "when": {
+                                "equals": "no"
+                            },
+                            "goto": "end_block"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "blockId": "consent_block",
+            "title": "Consent",
+            "questions": [
+                {
+                    "id": "consent_01",
+                    "type": "consent",
+                    "label": {
+                        "en": "I consent to the processing of my (non-identifiable) responses for research purposes.",
+                        "pt": "Eu consinto o processamento das minhas respostas (não identificáveis) para fins de pesquisa.",
+                        "es": "Consiento el procesamiento de mis respuestas (no identificables) con fines de investigación."
+                    },
+                    "required": true
+                }
+            ]
+        }
+    ],
+    "end": {
+        "id": "end_block",
+        "label": {
+            "en": "Thank you! Your responses have been recorded.",
+            "pt": "Obrigado! As suas respostas foram registadas.",
+            "es": "¡Gracias! Sus respuestas han sido registradas."
+        },
+        "postSubmitActions": [
+            {
+                "type": "save_to_db"
+            },
+            {
+                "type": "export_csv_if_admin",
+                "enabled": true
+            }
+        ]
+    },
+    "hooks": {
+        "onLoad": "/* optional JS to execute when survey loads (string) */",
+        "onSubmit": "/* optional JS to run before POSTing responses (string) */",
+        "customValidation": "/* optional place for custom validation logic in JS */"
+    },
+    "meta": {
+        "author": "mockup-generator",
+        "createdAt": "2025-09-20T00:00:00Z",
+        "notes": "Designed to cover branching, validations, matrix and multi-language scenarios."
+    }
+}
