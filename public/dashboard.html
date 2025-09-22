@@ -58,7 +58,7 @@
 
 <body>
     <nav style="display:flex;justify-content:flex-end;gap:1.5rem;margin:0 0 2rem 0;">
-        <a href="./index.html"
+        <a href="/"
             style="color:#fff;background:#222;padding:0.5em 1.2em;border-radius:8px;text-decoration:none;font-weight:600;">Survey
             Page</a>
     </nav>
@@ -85,7 +85,7 @@
     </div>
 
     <script>
-        fetch('http://localhost:3000/api/responses')
+        fetch('api/responses')
             .then(res => res.json())
             .then(data => {
                 const tbody = document.querySelector('#responses-table tbody');

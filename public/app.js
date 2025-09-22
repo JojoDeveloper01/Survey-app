@@ -1,5 +1,4 @@
 
-// --- Language Switcher UI ---
 const urlParams = new URLSearchParams(window.location.search);
 let lang = urlParams.get('lang') || "en";
 
@@ -397,10 +396,8 @@ fetch('./surveys/consumer_survey.json')
                 formData[input.name] = input.checked;
             });
 
-            console.log("Form Data to submit: ", formData);
-
             // POST to server
-            fetch('http://localhost:3000/api/submit', {
+            fetch('/api/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
