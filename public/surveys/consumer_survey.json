@@ -24,7 +24,7 @@
         {
             "blockId": "demo_block",
             "title": "Demographics",
-            "randomizeQuestions": false,
+            "randomizeQuestions": true,
             "questions": [
                 {
                     "id": "q_age",
@@ -76,7 +76,7 @@
                             }
                         }
                     ],
-                    "required": false
+                    "required": true
                 },
                 {
                     "id": "q_gender",
@@ -120,7 +120,7 @@
                             }
                         }
                     ],
-                    "required": false
+                    "required": true
                 },
                 {
                     "id": "q_country",
@@ -199,7 +199,7 @@
         {
             "blockId": "shopping_block",
             "title": "Shopping & Consumption",
-            "randomizeQuestions": false,
+            "randomizeQuestions": true,
             "questions": [
                 {
                     "id": "q_channel_pref",
@@ -251,7 +251,7 @@
                             }
                         }
                     ],
-                    "required": false
+                    "required": true
                 },
                 {
                     "id": "q_freq",
@@ -295,7 +295,7 @@
                             }
                         }
                     ],
-                    "required": false
+                    "required": true
                 },
                 {
                     "id": "q_top_reasons",
@@ -347,7 +347,7 @@
                             }
                         }
                     ],
-                    "required": false,
+                    "required": true,
                     "maxSelect": 3
                 },
                 {
@@ -418,13 +418,13 @@
                             }
                         }
                     ],
-                    "required": false
+                    "required": true
                 }
             ]
         },
         {
             "blockId": "behavior_logic_block",
-            "title": "Advanced Logic & Branching",
+            "title": "",
             "questions": [
                 {
                     "id": "q_online_only_branch",
@@ -460,7 +460,7 @@
                             }
                         }
                     ],
-                    "required": false,
+                    "required": true,
                     "branches": [
                         {
                             "when": {
@@ -542,7 +542,7 @@
                             }
                         }
                     ],
-                    "required": false,
+                    "required": true,
                     "maxSelect": 3
                 },
                 {
@@ -587,13 +587,13 @@
                             }
                         }
                     ],
-                    "required": false
+                    "required": true
                 }
             ]
         },
         {
-            "blockId": "quality_check_block",
-            "title": "Quality Checks & Ending",
+            "blockId": "quality_extra",
+            "title": "Extra",
             "questions": [
                 {
                     "id": "q_attention",
@@ -637,8 +637,7 @@
                             }
                         }
                     ],
-                    "required": false,
-                    "qualityCheck": true
+                    "required": true
                 },
                 {
                     "id": "q_contact_opt_in",

@@ -4,11 +4,14 @@ A full-stack, multi-language survey project built with vanilla JavaScript, HTML,
 
 ---
 
+
 ## 🚀 Features
 
 - **Dynamic Survey Rendering**: Loads survey structure from JSON and renders all question types (single, multiple, matrix, ranked, text, email, phone, consent) dynamically.
 - **Multi-language Support**: Language switcher (English, Spanish, Portuguese) updates the UI and URL (`?lang=xx`).
-- **Validation**: Required fields, **regex** for email/phone, visual error feedback, and asterisk for required questions.
+- **Validation**: Required fields, **regex** for email/phone, visual error feedback.
+- **Randomized Questions**: Any section (block) with `"randomizeQuestions": true` in the JSON will display its questions in a random order each time the survey loads.
+- **Branching Logic**: Questions can define `branches` in the JSON. If a user selects a specific answer (e.g., "Yes"), a follow-up question will appear immediately below. This enables conditional flows (e.g., "If you answered Yes, show question X; if No, show question Y").
 - **Backend API**: Node.js + Express server with SQLite for persistent response storage.
 - **Dashboard**: View all survey responses.
 
@@ -38,6 +41,7 @@ survey-app/
 
 ## 🛠️ How It Works
 
+
 ### 1. Survey UI (Frontend)
 
 - Loads survey definition from `/public/surveys/consumer_survey.json`.
@@ -45,6 +49,8 @@ survey-app/
 - Language switcher at the top updates the `lang` URL param and reloads the survey in the selected language.
 - Required fields are marked with an asterisk and block submission if empty.
 - Email and phone fields use regex validation (with error messages).
+- **Randomized Questions**: If a block in the JSON has `randomizeQuestions: true`, its questions will be shuffled each time the survey loads. This can be enabled for any section.
+- **Branching Logic**: Some questions have follow-up logic. For example, if you answer "Yes" to a question, a related follow-up question will appear directly below. This is controlled by the `branches` array in the JSON. Branching works for any answer value and can show different follow-ups for different responses.
 - On submit, responses are POSTed to the backend API.
 - Success and error dialogs provide user feedback.
 
@@ -96,4 +102,18 @@ survey-app/
 ## 🎨 Customization
 
 - To change the survey, edit `/public/surveys/consumer_survey.json`.
+   - To randomize questions in a section, set `"randomizeQuestions": true` in that block.
+   - To add branching (conditional follow-up questions), add a `branches` array to a question. Example:
+      ```json
+      {
+         "id": "q1",
+         "type": "single",
+         "label": { "en": "Do you shop online?" },
+         "options": [ ... ],
+         "branches": [
+            { "when": { "equals": "yes" }, "goto": "q2" },
+            { "when": { "equals": "no" }, "goto": "q3" }
+         ]
+      }
+      ```
 - To change styles, edit `/public/style.css`.
