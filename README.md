@@ -4,6 +4,8 @@ A full-stack, multi-language survey project built with vanilla JavaScript, HTML,
 
 ---
 
+https://github.com/user-attachments/assets/f26b91a8-1285-43e6-acf5-04df15198a3f
+
 
 ## 🚀 Features
 
