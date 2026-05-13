@@ -1,0 +1,8 @@
+name = "survey-app"
+pages_build_output_dir = "public"
+compatibility_date = "2026-05-13"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "survey-app-db"
+database_id = "d82f6f18-24e3-49ac-a34a-991b6dda540d"
