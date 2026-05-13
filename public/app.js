@@ -1,10 +1,21 @@
+import { initTradux, setLanguage as setTraduxLanguage } from 'https://esm.sh/tradux@1.5.10/browser';
+
+const supportedLanguages = ['en', 'pt'];
 const urlParams = new URLSearchParams(window.location.search);
-let lang = urlParams.get('lang') || "en";
+const requestedLang = supportedLanguages.includes(urlParams.get('lang')) ? urlParams.get('lang') : null;
+const tradux = await initTradux(requestedLang);
+let lang = tradux.currentLanguage;
+const t = tradux.t;
+
+document.documentElement.lang = lang;
+document.title = t.meta.title;
+document.querySelector('meta[name="description"]')?.setAttribute('content', t.meta.description);
+document.querySelector('[data-i18n="survey.success"]')?.replaceChildren(t.survey.success);
+document.querySelector('[data-i18n="survey.close"]')?.replaceChildren(t.survey.close);
 
 const langOptions = [
-    { code: 'en', label: 'English' },
-    { code: 'es', label: 'Español' },
-    { code: 'pt', label: 'Português' }
+    { code: 'en', label: t.language.en },
+    { code: 'pt', label: t.language.pt }
 ];
 
 function createLangSwitcher() {
@@ -12,7 +23,7 @@ function createLangSwitcher() {
     switcher.className = 'lang-switcher';
 
     const label = document.createElement('span');
-    label.textContent = 'Language:';
+    label.textContent = t.language.label;
     label.className = 'lang-switcher-label';
     switcher.appendChild(label);
 
@@ -20,8 +31,9 @@ function createLangSwitcher() {
         const btn = document.createElement('button');
         btn.textContent = opt.label;
         btn.className = 'lang-switcher-btn' + (lang === opt.code ? ' active' : '');
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', async () => {
             if (lang !== opt.code) {
+                await setTraduxLanguage(opt.code);
                 urlParams.set('lang', opt.code);
                 window.location.search = urlParams.toString();
             }
@@ -184,7 +196,7 @@ function renderQuestion(q, parentBlock, data, insertAfterElem = null) {
     if (q.type === 'ranked') {
         const instructionDiv = document.createElement('div');
         instructionDiv.classList.add('ranked-instruction');
-        instructionDiv.textContent = 'Drag and drop to reorder from most important (top) to least important (bottom)';
+        instructionDiv.textContent = t.survey.rankedInstruction;
         wrapper.appendChild(instructionDiv);
 
         const rankedDiv = document.createElement('div');
@@ -281,7 +293,7 @@ function renderQuestion(q, parentBlock, data, insertAfterElem = null) {
         input.name = q.id;
         input.id = q.id;
         input.type = 'email';
-        input.placeholder = 'Enter your email address';
+        input.placeholder = t.survey.emailPlaceholder;
 
         // Create error message element
         const errorDiv = document.createElement('div');
@@ -309,7 +321,7 @@ function renderQuestion(q, parentBlock, data, insertAfterElem = null) {
         input.id = q.id;
         input.type = 'tel';
         input.maxLength = 9;  //portugal phone numbers have 9 digits
-        input.placeholder = 'Enter 9-digit phone number';
+        input.placeholder = t.survey.phonePlaceholder;
 
         // Create error message element
         const errorDiv = document.createElement('div');
@@ -386,7 +398,7 @@ fetch('./surveys/consumer_survey.json')
         data.blocks.forEach(b => {
             const section = document.createElement('section');
             const title = document.createElement('h3');
-            title.textContent = b.title;
+            title.textContent = t.survey.blocks[b.blockId] || b.title;
             section.appendChild(title);
 
             let questionsToRender = b.questions;
@@ -416,7 +428,7 @@ fetch('./surveys/consumer_survey.json')
         });
         errorForm.appendChild(closeMessage);
         const errorMessage = document.createElement('p');
-        errorMessage.textContent = 'There are errors in the form. Please fix them before submitting.';
+        errorMessage.textContent = t.survey.formError;
         errorForm.appendChild(errorMessage);
         form.appendChild(errorForm);
 
@@ -425,7 +437,7 @@ fetch('./surveys/consumer_survey.json')
         sectionButton.className = 'submit-section';
         const submitBtn = document.createElement('button');
         submitBtn.type = 'submit';
-        submitBtn.textContent = 'Submit Survey';
+        submitBtn.textContent = t.survey.submit;
         sectionButton.appendChild(submitBtn);
         form.appendChild(sectionButton);
 
@@ -502,10 +514,10 @@ function validateEmail(input, errorDiv) {
     const value = input.value.trim();
 
     if (value === '') {
-        showError(errorDiv, 'Email address is required.');
+        showError(errorDiv, t.validation.emailRequired);
         return false;
     } else if (!emailRegex.test(value)) {
-        showError(errorDiv, 'Please enter a valid email address.');
+        showError(errorDiv, t.validation.emailInvalid);
         return false;
     } else {
         hideError(errorDiv);
@@ -519,10 +531,10 @@ function validatePhone(input, errorDiv) {
     const value = input.value.trim();
 
     if (value === '') {
-        showError(errorDiv, 'Phone number is required.');
+        showError(errorDiv, t.validation.phoneRequired);
         return false;
     } else if (!phoneRegex.test(value)) {
-        showError(errorDiv, 'Please enter a valid 9-digit phone number.');
+        showError(errorDiv, t.validation.phoneInvalid);
         return false;
     } else {
         hideError(errorDiv);
@@ -548,7 +560,7 @@ function validateRequiredRadios(wrapper, errorDiv) {
         const name = radios[0].name;
         const checked = wrapper.querySelector(`input[type="radio"][name="${name}"]:checked`);
         if (!checked) {
-            errorDiv.textContent = 'This field is required.';
+            errorDiv.textContent = t.validation.required;
             errorDiv.style.display = 'block';
             return false;
         }
@@ -562,7 +574,7 @@ function validateRequiredCheckboxes(wrapper, errorDiv) {
     if (checkboxes.length > 0) {
         const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
         if (!anyChecked) {
-            errorDiv.textContent = 'Please select at least one option.';
+            errorDiv.textContent = t.validation.checkboxRequired;
             errorDiv.style.display = 'block';
             return false;
         }
@@ -579,7 +591,7 @@ function validateMatrix(wrapper, errorDiv) {
             const rowRadios = rows[i].querySelectorAll('input[type="radio"]');
             const name = rowRadios.length > 0 ? rowRadios[0].name : null;
             if (name && !table.querySelector(`input[type="radio"][name="${name}"]:checked`)) {
-                errorDiv.textContent = 'Please answer all rows.';
+                errorDiv.textContent = t.validation.matrixRequired;
                 errorDiv.style.display = 'block';
                 return false;
             }
@@ -627,7 +639,7 @@ function validateForm() {
         if (ranked) {
             const hiddenInputs = ranked.querySelectorAll('input[type="hidden"]');
             if (hiddenInputs.length === 0 || Array.from(hiddenInputs).some(inp => !inp.value)) {
-                errorDiv.textContent = 'Please rank all options.';
+                errorDiv.textContent = t.validation.rankedRequired;
                 errorDiv.style.display = 'block';
                 isValid = false;
             }
@@ -637,7 +649,7 @@ function validateForm() {
         // Consent
         const consent = wrapper.querySelector('input[type="checkbox"]');
         if (consent && !consent.checked) {
-            errorDiv.textContent = 'You must consent to continue.';
+            errorDiv.textContent = t.validation.consentRequired;
             errorDiv.style.display = 'block';
             isValid = false;
             return;
@@ -646,7 +658,7 @@ function validateForm() {
         // Text, email, phone, etc.
         const textInput = wrapper.querySelector('input[type="text"], textarea');
         if (textInput && textInput.value.trim() === '') {
-            errorDiv.textContent = 'This field is required.';
+            errorDiv.textContent = t.validation.required;
             errorDiv.style.display = 'block';
             isValid = false;
         }

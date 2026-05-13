@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "title": "Survey App — Joseth Balcazar",
+    "description": "A multilingual survey app by Joseth Balcazar, deployed on Cloudflare Pages with D1 storage and protected response dashboard."
+  },
+  "nav": {
+    "home": "Main portfolio",
+    "dashboard": "Dashboard",
+    "survey": "Survey page"
+  },
+  "language": {
+    "label": "Language:",
+    "en": "English",
+    "pt": "Português"
+  },
+  "survey": {
+    "blocks": {
+      "demo_block": "Demographics",
+      "shopping_block": "Shopping & Consumption",
+      "preferences_block": "Preferences",
+      "contact_block": "Contact",
+      "behavior_logic_block": "Follow-up questions",
+      "quality_extra": "Extra",
+      "consent_block": "Consent"
+    },
+    "rankedInstruction": "Drag and drop to reorder from most important (top) to least important (bottom)",
+    "emailPlaceholder": "Enter your email address",
+    "phonePlaceholder": "Enter 9-digit phone number",
+    "submit": "Submit Survey",
+    "success": "Form submitted successfully!",
+    "close": "Close",
+    "formError": "There are errors in the form. Please fix them before submitting."
+  },
+  "validation": {
+    "emailRequired": "Email address is required.",
+    "emailInvalid": "Please enter a valid email address.",
+    "phoneRequired": "Phone number is required.",
+    "phoneInvalid": "Please enter a valid 9-digit phone number.",
+    "required": "This field is required.",
+    "checkboxRequired": "Please select at least one option.",
+    "matrixRequired": "Please answer all rows.",
+    "rankedRequired": "Please rank all options.",
+    "consentRequired": "You must consent to continue."
+  },
+  "dashboard": {
+    "title": "Survey Responses Dashboard",
+    "id": "ID",
+    "submittedAt": "Submitted At",
+    "responseData": "Response Data",
+    "loading": "Loading...",
+    "empty": "No responses yet."
+  }
+}

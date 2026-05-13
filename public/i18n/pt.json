@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "title": "Survey App — Joseth Balcazar",
+    "description": "Aplicação multilingue de questionários por Joseth Balcazar, publicada em Cloudflare Pages com armazenamento D1 e dashboard de respostas protegido."
+  },
+  "nav": {
+    "home": "Portfolio principal",
+    "dashboard": "Dashboard",
+    "survey": "Página do questionário"
+  },
+  "language": {
+    "label": "Idioma:",
+    "en": "English",
+    "pt": "Português"
+  },
+  "survey": {
+    "blocks": {
+      "demo_block": "Demografia",
+      "shopping_block": "Compras e Consumo",
+      "preferences_block": "Preferências",
+      "contact_block": "Contacto",
+      "behavior_logic_block": "Perguntas de seguimento",
+      "quality_extra": "Extra",
+      "consent_block": "Consentimento"
+    },
+    "rankedInstruction": "Arraste e solte para ordenar do mais importante (em cima) ao menos importante (em baixo)",
+    "emailPlaceholder": "Introduza o seu email",
+    "phonePlaceholder": "Introduza um número com 9 dígitos",
+    "submit": "Submeter questionário",
+    "success": "Formulário submetido com sucesso!",
+    "close": "Fechar",
+    "formError": "Existem erros no formulário. Corrija-os antes de submeter."
+  },
+  "validation": {
+    "emailRequired": "O email é obrigatório.",
+    "emailInvalid": "Introduza um email válido.",
+    "phoneRequired": "O número de telefone é obrigatório.",
+    "phoneInvalid": "Introduza um número de telefone válido com 9 dígitos.",
+    "required": "Este campo é obrigatório.",
+    "checkboxRequired": "Selecione pelo menos uma opção.",
+    "matrixRequired": "Responda a todas as linhas.",
+    "rankedRequired": "Ordene todas as opções.",
+    "consentRequired": "Tem de aceitar o consentimento para continuar."
+  },
+  "dashboard": {
+    "title": "Dashboard de Respostas",
+    "id": "ID",
+    "submittedAt": "Submetido em",
+    "responseData": "Dados da resposta",
+    "loading": "A carregar...",
+    "empty": "Ainda não existem respostas."
+  }
+}

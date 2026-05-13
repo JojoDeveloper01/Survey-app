@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Protected survey responses dashboard for Joseth Balcazar Survey App.">
     <title>Survey Responses Dashboard</title>
     <style>
         .dashboard-container {
@@ -10,7 +12,6 @@
             margin-inline: auto;
             border-radius: 16px;
             overflow: hidden;
-            border-radius: 16px;
         }
 
         .table-responsive {
@@ -41,12 +42,6 @@
             background: #f7f7f7;
         }
 
-        .json-view {
-            font-family: monospace;
-            font-size: 0.95em;
-            white-space: pre-wrap;
-        }
-
         @media (max-width: 1200px) {
             .dashboard-container {
                 width: 95%;
@@ -57,41 +52,50 @@
 </head>
 
 <body>
-    <nav style="display:flex;justify-content:flex-end;gap:1.5rem;margin:0 0 2rem 0;">
-        <a href="/"
-            style="color:#fff;background:#222;padding:0.5em 1.2em;border-radius:8px;text-decoration:none;font-weight:600;">Survey
-            Page</a>
+    <nav class="top-nav">
+        <a href="https://josethbalcazar.com/" data-i18n="nav.home">Main portfolio</a>
+        <a href="/" data-i18n="nav.survey">Survey page</a>
     </nav>
 
     <div class="dashboard-container">
-
-        <h1>Survey Responses Dashboard</h1>
+        <h1 data-i18n="dashboard.title">Survey Responses Dashboard</h1>
         <div class="table-responsive">
             <table id="responses-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Submitted At</th>
-                        <th>Response Data</th>
+                        <th data-i18n="dashboard.id">ID</th>
+                        <th data-i18n="dashboard.submittedAt">Submitted At</th>
+                        <th data-i18n="dashboard.responseData">Response Data</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="3">Loading...</td>
+                        <td colspan="3" data-i18n="dashboard.loading">Loading...</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        import { initTradux } from 'https://esm.sh/tradux@1.5.10/browser';
+
+        const tradux = await initTradux();
+        const t = tradux.t;
+        document.documentElement.lang = tradux.currentLanguage;
+        document.title = t.dashboard.title;
+        document.querySelectorAll('[data-i18n]').forEach((element) => {
+            const value = element.dataset.i18n.split('.').reduce((acc, key) => acc?.[key], t);
+            if (value) element.textContent = value;
+        });
+
         fetch('api/responses')
             .then(res => res.json())
             .then(data => {
                 const tbody = document.querySelector('#responses-table tbody');
                 tbody.innerHTML = '';
                 if (data.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="3">No responses yet.</td></tr>';
+                    tbody.innerHTML = `<tr><td colspan="3">${t.dashboard.empty}</td></tr>`;
                     return;
                 }
                 data.forEach(resp => {
